@@ -1,0 +1,36 @@
+{
+	"name": "gatsby-plugin-tidy",
+	"version": "1.0.0",
+	"description": "Cleans up Gatsby's public directory organizing js/css into folders!",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/koga73/gatsby-plugin-tidy.git"
+	},
+	"keywords": [
+		"gatsby",
+		"gatsby-plugin",
+		"public",
+		"css",
+		"js",
+		"folder",
+		"directory",
+		"clean",
+		"organize"
+	],
+	"author": "AJ Savino",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/koga73/gatsby-plugin-tidy/issues"
+	},
+	"homepage": "https://github.com/koga73/gatsby-plugin-tidy#readme",
+	"dependencies": {
+		"fs-extra": "^5.0.0"
+	},
+	"peerDependencies": {
+		"gatsby": ">2.0.0-alpha"
+	}
+}

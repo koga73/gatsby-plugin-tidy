@@ -7,23 +7,23 @@ npm install --save-dev gatsby-plugin-tidy
 ```
 
 ## Usage
-Edit or create this file: *gatsby-config.js* at the root of your project
+Edit or create this file at the root of your project: *gatsby-config.js*
 ```
 module.exports = {
-	plugins: [
-		{
-			resolve: "gatsby-plugin-tidy",
-			options: {
-				cleanPublic: true,
-				removeHashes: true,
-				removeArtifacts: true,
-				noJsMap: true,
-				removeInlineStyles: true,
-				jsDir: "js",
-				cssDir: "css"
-			}
-		}
-	]
+    plugins: [
+        {
+            resolve: "gatsby-plugin-tidy",
+            options: {
+                cleanPublic: true,
+                removeHashes: true,
+                removeArtifacts: true,
+                noJsMap: true,
+                removeInlineStyles: true,
+                jsDir: "js",
+                cssDir: "css"
+        	}
+        }
+    ]
 };
 ```
 

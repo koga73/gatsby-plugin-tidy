@@ -1,9 +1,9 @@
 # gatsby-plugin-tidy
-Cleans up Gatsby's public directory organizing js/css into folders!
+Cleans up Gatsby's public directory organizing js/css into folders! Does some other stuff too, see the options.
 
 ## Install
 ```
-npm install --save-dev gatsby-plugin-tidy
+npm install --save gatsby-plugin-tidy
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ module.exports = {
                 removeInlineStyles: true,
                 jsDir: "js",
                 cssDir: "css"
-        	}
+            }
         }
     ]
 };

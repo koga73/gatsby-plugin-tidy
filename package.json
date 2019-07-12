@@ -19,7 +19,13 @@
 		"folder",
 		"directory",
 		"clean",
-		"organize"
+		"organize",
+		"cache",
+		"hash",
+		"artifact",
+		"inline",
+		"styles",
+		"map"
 	],
 	"author": "AJ Savino",
 	"license": "MIT",
@@ -28,7 +34,7 @@
 	},
 	"homepage": "https://github.com/koga73/gatsby-plugin-tidy#readme",
 	"dependencies": {
-		"fs-extra": "^5.0.0"
+		"rimraf": "^2.6.3"
 	},
 	"peerDependencies": {
 		"gatsby": ">2.0.0-alpha"

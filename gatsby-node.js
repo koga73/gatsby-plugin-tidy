@@ -1,7 +1,8 @@
-const fs = require("fs-extra");
+const rimraf = require("rimraf");
 
 const DEFAULT_JS_DIR = "js";
 const DEFAULT_CSS_DIR = "css";
+const DEFAULT_DELETE_TIMEOUT = 3000;
 
 const ROOT_PATH = process.cwd();
 const PUBLIC_DIR = "./public";
@@ -9,23 +10,44 @@ const CACHE_DIR = "./.cache";
 const PUBLIC_PATH = ROOT_PATH + "/" + PUBLIC_DIR;
 const CACHE_PATH = ROOT_PATH + "/" + CACHE_DIR;
 
-exports.onPreBuild = (args, pluginOptions) => {
+exports.onPreInit = (args, pluginOptions, callback) => {
+	const cleanCache = pluginOptions.cleanCache || false;
 	const cleanPublic = pluginOptions.cleanPublic || false;
+	const deleteTimeout = pluginOptions.deleteTimeout || DEFAULT_DELETE_TIMEOUT;
 
-	//Remove public folder
-	if (cleanPublic) {
-		fs.removeSync(PUBLIC_PATH);
+	if (cleanCache) {
+		rimraf.sync(CACHE_PATH);
 	}
+	if (cleanPublic) {
+		rimraf.sync(PUBLIC_PATH);
+	}
+
+	//Yes this actually makes a difference. Otherwise I guess the directories don't have time to fully delete? Idk
+	setTimeout(callback, deleteTimeout);
 };
 
-exports.onPostBuild = (args, pluginOptions) => {
+exports.onPostBuild = (args, pluginOptions, callback) => {
 	const removeArtifacts = pluginOptions.removeArtifacts || false;
+	const cleanCache = pluginOptions.cleanCache || false;
+	const deleteTimeout = pluginOptions.deleteTimeout || DEFAULT_DELETE_TIMEOUT;
+
+	if (process.env.NODE_ENV !== "production") {
+		callback();
+		return;
+	}
 
 	//Remove build artifacts
-	if (removeArtifacts && process.env.NODE_ENV === "production") {
-		fs.removeSync(PUBLIC_PATH + "/webpack.stats.json");
-		fs.removeSync(PUBLIC_PATH + "/chunk-map.json");
+	if (removeArtifacts) {
+		rimraf.sync(PUBLIC_PATH + "/webpack.stats.json");
+		rimraf.sync(PUBLIC_PATH + "/chunk-map.json");
 	}
+
+	if (cleanCache) {
+		rimraf.sync(CACHE_PATH);
+	}
+
+	//Yes this actually makes a difference. Otherwise I guess the directories don't have time to fully delete? Idk
+	setTimeout(callback, deleteTimeout);
 };
 
 //Modifies webpack config to output js/css into correct directories

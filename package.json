@@ -1,6 +1,6 @@
 {
 	"name": "gatsby-plugin-tidy",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Cleans up Gatsby's public directory organizing js/css into folders!",
 	"main": "index.js",
 	"scripts": {

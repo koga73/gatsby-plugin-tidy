@@ -1,5 +1,6 @@
 # gatsby-plugin-tidy
-Cleans up Gatsby's public directory organizing js/css into folders! Does some other stuff too, see the options.
+Cleans up Gatsby's public directory organizing js/css into folders!  
+Does some other stuff too, see the options below.
 
 ## Install
 ```

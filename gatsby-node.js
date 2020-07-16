@@ -51,7 +51,7 @@ exports.onPostBuild = (args, pluginOptions, callback) => {
 };
 
 //Modifies webpack config to output js/css into correct directories
-exports.onCreateWebpackConfig = ({ getConfig, stage, actions }, pluginOptions) => {
+exports.onCreateWebpackConfig = ({ getConfig, stage, actions, pathPrefix }, pluginOptions) => {
 	const removeHashes = pluginOptions.removeHashes || false;
 	const noJsMap = pluginOptions.noJsMap || false;
 	const jsDir = pluginOptions.jsDir || DEFAULT_JS_DIR;
@@ -65,7 +65,7 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }, pluginOptions) =
 				filename: `[name]${removeHashes ? "" : ".[contenthash]"}.js`,
 				chunkFilename: `[name]${removeHashes ? "" : ".[contenthash]"}.js`,
 				path: `${PUBLIC_PATH}/${jsDir}/`,
-				publicPath: `/${jsDir}/`,
+				publicPath: `${pathPrefix}/${jsDir}/`,
 			};
 
 			//Remove map files

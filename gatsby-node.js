@@ -110,7 +110,7 @@ class WebpackRenamer {
 				for (var i = 0; i < chunkGroup.chunks.length; i++) {
 					var chunk = chunkGroup.chunks[i];
 					chunk.files = chunk.files.map((file) => {
-						if (new RegExp(`^(?!${jsDir}).+?\\.(map|js)$`).test(file)) {
+						if (new RegExp(`^(?!${jsDir}).+?\\.(map|js|svg|png|jpg)$`).test(file)) {
 							return jsDir + "/" + file;
 						}
 						if (new RegExp(`^(?!${cssDir}).+?\\.(css)$`).test(file)) {
